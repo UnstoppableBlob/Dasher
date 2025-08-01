@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bh0nh7hj0y5dp" path="res://tiles/Cute_Fantasy_Free/Cute_Fantasy_Free/Player/Player.png" id="2_p5pfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkaba"]
-size = Vector2(10, 20)
+size = Vector2(10, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0pbp"]
 atlas = ExtResource("2_p5pfy")
@@ -296,12 +296,12 @@ script = ExtResource("1_0u34c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, -3)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_rkaba")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_psfhk")
-animation = &"walkright"
+animation = &"idleback"
 autoplay = "idleback"
 
 [node name="Camera2D" type="Camera2D" parent="."]
