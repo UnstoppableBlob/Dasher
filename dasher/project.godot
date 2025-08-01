@@ -13,3 +13,11 @@ config_version=5
 config/name="Dasher"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
+
+[rendering]
+
+2d/snap/snap_2d_transforms_to_pixel=true

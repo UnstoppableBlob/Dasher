@@ -1,0 +1,186 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8jwpf6vofw4u"]
+
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="1_478b3"]
+[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="2_me3vn"]
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator_settings.gd" id="3_ydt5r"]
+[ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="4_lkdj5"]
+[ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="5_hukh7"]
+[ext_resource type="Texture2D" uid="uid://npttwb3x0pbd" path="res://tiles/art from gaea devworm tutorial/art/ArtForWalker-GaeaTutorial.png" id="6_3ng3x"]
+
+[sub_resource type="Resource" id="Resource_3r275"]
+script = ExtResource("4_lkdj5")
+type = 1
+tilemap_layer = 0
+terrain_set = 0
+terrain = 0
+id = ""
+layer = 0
+
+[sub_resource type="Resource" id="Resource_up4ry"]
+resource_name = "Settings"
+script = ExtResource("3_ydt5r")
+tile = SubResource("Resource_3r275")
+fullness_check = 0
+max_tiles = 150
+constrain_world_size = false
+max_walkers = 5
+new_dir_chance = 0.5
+new_walker_chance = 0.05
+destroy_walker_chance = 0.05
+room_chances = {
+Vector2i(2, 2): 0.5,
+Vector2i(3, 3): 0.1
+}
+modifiers = Array[ExtResource("2_me3vn")]([])
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3aroo"]
+load_path = "res://.godot/imported/Tiles.png-b37ae58788c73f973449511106ab8b86.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yg208"]
+texture = SubResource("CompressedTexture2D_3aroo")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d67dj"]
+texture = ExtResource("6_3ng3x")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 2
+0:0/0/terrains_peering_bit/right_side = 2
+0:0/0/terrains_peering_bit/bottom_right_corner = 2
+0:0/0/terrains_peering_bit/bottom_side = 2
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 2
+1:0/0/terrains_peering_bit/right_side = 2
+1:0/0/terrains_peering_bit/bottom_right_corner = 2
+1:0/0/terrains_peering_bit/bottom_side = 2
+1:0/0/terrains_peering_bit/bottom_left_corner = 2
+1:0/0/terrains_peering_bit/left_side = 2
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 2
+2:0/0/terrains_peering_bit/bottom_side = 2
+2:0/0/terrains_peering_bit/bottom_left_corner = 2
+2:0/0/terrains_peering_bit/left_side = 2
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 2
+3:0/0/terrains_peering_bit/bottom_side = 2
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 2
+0:1/0/terrains_peering_bit/right_side = 2
+0:1/0/terrains_peering_bit/bottom_right_corner = 2
+0:1/0/terrains_peering_bit/bottom_side = 2
+0:1/0/terrains_peering_bit/top_side = 2
+0:1/0/terrains_peering_bit/top_right_corner = 2
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 2
+1:1/0/terrains_peering_bit/right_side = 2
+1:1/0/terrains_peering_bit/bottom_right_corner = 2
+1:1/0/terrains_peering_bit/bottom_side = 2
+1:1/0/terrains_peering_bit/bottom_left_corner = 2
+1:1/0/terrains_peering_bit/left_side = 2
+1:1/0/terrains_peering_bit/top_left_corner = 2
+1:1/0/terrains_peering_bit/top_side = 2
+1:1/0/terrains_peering_bit/top_right_corner = 2
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 2
+2:1/0/terrains_peering_bit/bottom_side = 2
+2:1/0/terrains_peering_bit/bottom_left_corner = 2
+2:1/0/terrains_peering_bit/left_side = 2
+2:1/0/terrains_peering_bit/top_left_corner = 2
+2:1/0/terrains_peering_bit/top_side = 2
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 2
+3:1/0/terrains_peering_bit/bottom_side = 2
+3:1/0/terrains_peering_bit/top_side = 2
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 2
+0:2/0/terrains_peering_bit/right_side = 2
+0:2/0/terrains_peering_bit/top_side = 2
+0:2/0/terrains_peering_bit/top_right_corner = 2
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 2
+1:2/0/terrains_peering_bit/right_side = 2
+1:2/0/terrains_peering_bit/left_side = 2
+1:2/0/terrains_peering_bit/top_left_corner = 2
+1:2/0/terrains_peering_bit/top_side = 2
+1:2/0/terrains_peering_bit/top_right_corner = 2
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 2
+2:2/0/terrains_peering_bit/left_side = 2
+2:2/0/terrains_peering_bit/top_left_corner = 2
+2:2/0/terrains_peering_bit/top_side = 2
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 2
+3:2/0/terrains_peering_bit/top_side = 2
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 2
+0:3/0/terrains_peering_bit/right_side = 2
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 2
+1:3/0/terrains_peering_bit/right_side = 2
+1:3/0/terrains_peering_bit/left_side = 2
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 2
+2:3/0/terrains_peering_bit/left_side = 2
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 2
+0:4/0 = 0
+0:4/0/terrain_set = 0
+0:4/0/terrain = 1
+0:4/0/terrains_peering_bit/right_side = 1
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 1
+1:4/0/terrains_peering_bit/right_side = 1
+1:4/0/terrains_peering_bit/left_side = 1
+2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 1
+2:4/0/terrains_peering_bit/left_side = 1
+3:4/0 = 0
+3:4/0/terrain_set = 0
+3:4/0/terrain = 1
+0:5/0 = 0
+0:5/0/terrain_set = 0
+0:5/0/terrain = 0
+
+[sub_resource type="TileSet" id="TileSet_dlc8f"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Floor"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Walls"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_0/terrain_2/name = "Filling"
+terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_yg208")
+sources/1 = SubResource("TileSetAtlasSource_d67dj")
+
+[node name="world" type="Node2D"]
+
+[node name="WalkerGenerator" type="Node" parent="."]
+script = ExtResource("1_478b3")
+settings = SubResource("Resource_up4ry")
+
+[node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
+script = ExtResource("5_hukh7")
+node_type = 1
+tile_map = NodePath("../TileMap")
+generator = NodePath("../WalkerGenerator")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_dlc8f")
+format = 2
+layer_0/tile_data = PackedInt32Array(196615, 1, 5, 131079, 1, 5, 65543, 1, 5, 196614, 1, 5, 131078, 1, 5, 65542, 1, 5, 6, 1, 5, -65530, 1, 5, -131066, 1, 5, -196602, 1, 5, 196613, 1, 5, 131077, 1, 5, 65541, 1, 5, 5, 1, 5, -65531, 1, 5, -131067, 1, 5, -196603, 1, 5, -262139, 1, 5, -327675, 1, 5, -393211, 1, 5, -458747, 1, 5, 458756, 1, 5, 393220, 1, 5, 327684, 1, 5, 262148, 1, 5, 196612, 1, 5, 131076, 1, 5, 65540, 1, 5, -65532, 1, 5, -131068, 1, 5, -196604, 1, 5, -262140, 1, 5, -327676, 1, 5, -393212, 1, 5, -458748, 1, 5, 655363, 1, 5, 589827, 1, 5, 524291, 1, 5, 458755, 1, 5, 393219, 1, 5, 327683, 1, 5, 262147, 1, 5, 196611, 1, 5, 131075, 1, 5, 65539, 1, 5, -131069, 1, 5, -196605, 1, 5, -393213, 1, 5, 655362, 1, 5, 589826, 1, 5, 524290, 1, 5, 458754, 1, 5, 393218, 1, 5, 327682, 1, 5, 196610, 1, 5, 131074, 1, 5, 65538, 1, 5, -327678, 1, 5, -393214, 1, 5, -458750, 1, 5, 655361, 1, 5, 589825, 1, 5, 524289, 1, 5, 458753, 1, 5, 393217, 1, 5, 327681, 1, 5, 131073, 1, 5, 65537, 1, 5, -327679, 1, 5, -393215, 1, 5, -458751, 1, 5, -524287, 1, 5, 655360, 1, 5, 589824, 1, 5, 524288, 1, 5, 458752, 1, 5, 393216, 1, 5, 327680, 1, 5, 262144, 1, 5, 196608, 1, 5, 131072, 1, 5, 65536, 1, 5, 0, 1, 5, -65536, 1, 5, -327680, 1, 5, -393216, 1, 5, -458752, 1, 5, -524288, 1, 5, 655359, 1, 5, 589823, 1, 5, 524287, 1, 5, 458751, 1, 5, 393215, 1, 5, 327679, 1, 5, 262143, 1, 5, 196607, 1, 5, 131071, 1, 5, 65535, 1, 5, -1, 1, 5, -393217, 1, 5, 655358, 1, 5, 589822, 1, 5, 524286, 1, 5, 458750, 1, 5, 393214, 1, 5, 327678, 1, 5, 262142, 1, 5, -393218, 1, 5, -458754, 1, 5, -524290, 1, 5, 458749, 1, 5, 393213, 1, 5, 327677, 1, 5, 262141, 1, 5, 196605, 1, 5, 131069, 1, 5, -458755, 1, 5, -524291, 1, 5, 458748, 1, 5, 393212, 1, 5, 327676, 1, 5, 262140, 1, 5, 196604, 1, 5, 131068, 1, 5, 393211, 1, 5, 327675, 1, 5, 262139, 1, 5, 196603, 1, 5, 131067, 1, 5, 65531, 1, 5, -5, 1, 5, -65541, 1, 5, -131077, 1, 5, -196613, 1, 5, -262149, 1, 5, 393210, 1, 5, 327674, 1, 5, 262138, 1, 5, 196602, 1, 5, 131066, 1, 5, 65530, 1, 5, -6, 1, 5, -65542, 1, 5, -131078, 1, 5, -196614, 1, 5, -262150, 1, 5, 393209, 1, 5, 327673, 1, 5, 262137, 1, 5, 196601, 1, 5, 131065, 1, 5, 65529, 1, 5)
