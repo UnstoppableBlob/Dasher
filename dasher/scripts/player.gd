@@ -6,6 +6,10 @@ extends CharacterBody2D
 const SPEED = 50
 @export var is_attacking = false
 
+var dashing = false
+var dash_speed = 200
+var can_dash = true
+
 func _physics_process(delta: float) -> void:
 	var input_dir = Vector2.ZERO
 	input_dir = Input.get_vector("left", "right", "up", "down")
@@ -36,10 +40,24 @@ func _physics_process(delta: float) -> void:
 			anim.play("attackfront")
 		if !is_attacking:
 			anim.play("idlefront")
+
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dashing = true
+		can_dash = false
+		$Timer2.start()
+		$Timer.start()
+
+	if !dashing:
+		if !is_attacking:
+			velocity = input_dir * SPEED
+	else:
+		velocity = input_dir * dash_speed
 	
-
-		
-	if !is_attacking:
-		velocity = input_dir * SPEED
-
 	move_and_slide()
+
+
+func _on_timer_timeout() -> void:
+	dashing = false
+
+func _on_timer_2_timeout() -> void:
+	can_dash = true
