@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var anim = $AnimatedSprite2D
 @onready var anim_player = $AnimationPlayer
+@onready var dash = $Dash
 
 const SPEED = 50
 @export var is_attacking = false
@@ -9,6 +10,9 @@ const SPEED = 50
 var dashing = false
 var dash_speed = 200
 var can_dash = true
+
+func _ready() -> void:
+	dash.visible = false
 
 func _physics_process(delta: float) -> void:
 	var input_dir = Vector2.ZERO
@@ -42,6 +46,8 @@ func _physics_process(delta: float) -> void:
 			anim.play("idlefront")
 
 	if Input.is_action_just_pressed("dash") and can_dash:
+		dash.emitting = true
+		dash.visible = true
 		dashing = true
 		can_dash = false
 		$Timer2.start()
@@ -58,6 +64,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	dashing = false
+	dash.visible = false
 
 func _on_timer_2_timeout() -> void:
 	can_dash = true
