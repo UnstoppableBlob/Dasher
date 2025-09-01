@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0yksc05oaj4a"
-path="res://.godot/imported/tile_0325.png-877878db04dcdbd2e2d7c4526ea58b6c.ctex"
+uid="uid://ce0mwog6jakmn"
+path="res://.godot/imported/tile_0327.png-e444dffd47d1794f074dedaa6465b0b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0325.png"
-dest_files=["res://.godot/imported/tile_0325.png-877878db04dcdbd2e2d7c4526ea58b6c.ctex"]
+source_file="res://tile_0327.png"
+dest_files=["res://.godot/imported/tile_0327.png-e444dffd47d1794f074dedaa6465b0b3.ctex"]
 
 [params]
 

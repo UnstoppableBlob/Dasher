@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b8jwpf6vofw4u"]
+[gd_scene load_steps=28 format=3 uid="uid://b8jwpf6vofw4u"]
 
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="1_478b3"]
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_kvihj"]
@@ -11,6 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://cu77b2118mhjm" path="res://tiles/DampDungeons/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="8_xgwfb"]
 [ext_resource type="PackedScene" uid="uid://bbnuwippwwp2m" path="res://scenes/player.tscn" id="9_otgbb"]
 [ext_resource type="PackedScene" uid="uid://bujvujq55015o" path="res://scenes/1.tscn" id="11_02d6l"]
+[ext_resource type="PackedScene" uid="uid://biqklv0k51344" path="res://scenes/2.tscn" id="11_tiqcv"]
+[ext_resource type="PackedScene" uid="uid://dym0xq7v4v8q4" path="res://scenes/3.tscn" id="12_udvt5"]
+[ext_resource type="PackedScene" uid="uid://b6xovdpun336c" path="res://scenes/4.tscn" id="13_fcekd"]
+[ext_resource type="PackedScene" uid="uid://bgxghye73ke45" path="res://scenes/5.tscn" id="14_r3n8r"]
+[ext_resource type="PackedScene" uid="uid://cvwnwn3dpc3ar" path="res://scenes/6.tscn" id="15_gf2ib"]
+[ext_resource type="PackedScene" uid="uid://cgjgcsm4qc02v" path="res://scenes/7.tscn" id="16_4dxcm"]
+[ext_resource type="PackedScene" uid="uid://dnjyx7srf4mlv" path="res://scenes/8.tscn" id="17_x0tyf"]
+[ext_resource type="PackedScene" uid="uid://b1hd5bxtd5j81" path="res://scenes/9.tscn" id="18_dbqn8"]
 
 [sub_resource type="Resource" id="Resource_j2wk4"]
 script = ExtResource("4_lkdj5")
@@ -349,12 +357,31 @@ wait_time = 0.162
 one_shot = true
 autostart = true
 
-[node name="1" parent="." instance=ExtResource("11_02d6l")]
+[node name="Numbers" type="Node" parent="."]
+
+[node name="1" parent="Numbers" instance=ExtResource("11_02d6l")]
 position = Vector2(1856.38, 2495)
 scale = Vector2(0.075, 0.075)
 
-[node name="Camera2D" type="Camera2D" parent="1"]
-zoom = Vector2(0.04, 0.04)
+[node name="Camera2D" type="Camera2D" parent="Numbers/1"]
+enabled = false
+zoom = Vector2(0.66, 0.66)
+
+[node name="2" parent="Numbers" instance=ExtResource("11_tiqcv")]
+
+[node name="9" parent="Numbers" instance=ExtResource("18_dbqn8")]
+
+[node name="3" parent="Numbers" instance=ExtResource("12_udvt5")]
+
+[node name="4" parent="Numbers" instance=ExtResource("13_fcekd")]
+
+[node name="5" parent="Numbers" instance=ExtResource("14_r3n8r")]
+
+[node name="6" parent="Numbers" instance=ExtResource("15_gf2ib")]
+
+[node name="7" parent="Numbers" instance=ExtResource("16_4dxcm")]
+
+[node name="8" parent="Numbers" instance=ExtResource("17_x0tyf")]
 
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
-[connection signal="timeout" from="Spawn" to="1" method="_on_spawn_timeout"]
+[connection signal="timeout" from="Spawn" to="Numbers/1" method="_on_spawn_timeout"]

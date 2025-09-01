@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bujvujq55015o"]
+[gd_scene load_steps=6 format=3 uid="uid://b1hd5bxtd5j81"]
 
-[ext_resource type="Script" path="res://scripts/1.gd" id="1_uh5uh"]
-[ext_resource type="Texture2D" uid="uid://v6j2h1mt0li6" path="res://tiles/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0323.png" id="2_yya5k"]
+[ext_resource type="Script" path="res://scripts/9.gd" id="1_ifkyt"]
+[ext_resource type="Texture2D" uid="uid://dg0xjpt2122ag" path="res://tile_0331.png" id="2_au5th"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3h0m"]
 friction = 0.0
@@ -11,19 +11,19 @@ bounce = 1.0
 radius = 5.5653
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_32ls8"]
-radius = 0.3538
+radius = 5.61746
 
-[node name="1" type="RigidBody2D"]
+[node name="9" type="RigidBody2D"]
 scale = Vector2(0.015, 0.015)
 physics_material_override = SubResource("PhysicsMaterial_v3h0m")
 gravity_scale = 0.0
 linear_damp_mode = 1
 angular_damp_mode = 1
-script = ExtResource("1_uh5uh")
+script = ExtResource("1_ifkyt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.66, 1.66)
-texture = ExtResource("2_yya5k")
+texture = ExtResource("2_au5th")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.595, -0.81)
@@ -31,12 +31,12 @@ scale = Vector2(1.66, 1.66)
 shape = SubResource("CircleShape2D_oly5h")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.515, -0.555)
-scale = Vector2(43.275, 43.275)
+scale = Vector2(2.14, 2.14)
 shape = SubResource("CircleShape2D_32ls8")
 
 [node name="Timer" type="Timer" parent="."]

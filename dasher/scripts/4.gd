@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body) -> void:
 	if other && body is CharacterBody2D:
-		Global.player_speed = 10
+		Global.player_speed = 40
 		queue_free()
 
 
