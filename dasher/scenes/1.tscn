@@ -17,18 +17,21 @@ radius = 5.61746
 scale = Vector2(0.015, 0.015)
 physics_material_override = SubResource("PhysicsMaterial_v3h0m")
 gravity_scale = 0.0
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_uh5uh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4.125, 4.125)
+scale = Vector2(1.66, 1.66)
 texture = ExtResource("2_yya5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-10, -10)
-scale = Vector2(4.125, 4.125)
+position = Vector2(-0.595, -0.81)
+scale = Vector2(1.66, 1.66)
 shape = SubResource("CircleShape2D_oly5h")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
