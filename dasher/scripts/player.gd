@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var anim_player = $AnimationPlayer
 @onready var dash = $Dash
 
-const SPEED = 50
 @export var is_attacking = false
 
 var dashing = false
@@ -20,7 +19,6 @@ func _ready() -> void:
 	Global.player = self
 
 func _physics_process(delta: float) -> void:
-	print(spawned)
 	if spawned:
 		var input_dir = Vector2.ZERO
 		input_dir = Input.get_vector("left", "right", "up", "down")
@@ -62,9 +60,11 @@ func _physics_process(delta: float) -> void:
 
 		if !dashing:
 			if !is_attacking:
-				velocity = input_dir * SPEED
+				velocity = input_dir * Global.player_speed
 		else:
 			velocity = input_dir * dash_speed
+		
+		print(Global.player_speed)
 		
 		move_and_slide()
 
