@@ -450,6 +450,7 @@ frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -1.645)
+enabled = false
 zoom = Vector2(5.665, 5.665)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0

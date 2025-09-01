@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bujvujq55015o"]
+
+[ext_resource type="Script" path="res://scripts/1.gd" id="1_uh5uh"]
+[ext_resource type="Texture2D" uid="uid://v6j2h1mt0li6" path="res://tiles/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0323.png" id="2_yya5k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3h0m"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oly5h"]
+radius = 5.5653
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32ls8"]
+radius = 5.61746
+
+[node name="1" type="RigidBody2D"]
+scale = Vector2(0.015, 0.015)
+physics_material_override = SubResource("PhysicsMaterial_v3h0m")
+script = ExtResource("1_uh5uh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5.98, 5.98)
+texture = ExtResource("2_yya5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -10)
+scale = Vector2(19.945, 19.945)
+shape = SubResource("CircleShape2D_oly5h")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-10, -10)
+scale = Vector2(19.945, 19.945)
+shape = SubResource("CircleShape2D_32ls8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
