@@ -359,9 +359,10 @@ autostart = true
 
 [node name="1" parent="." instance=ExtResource("11_02d6l")]
 position = Vector2(1814, 2495)
-scale = Vector2(2.25, 2.25)
+scale = Vector2(0.075, 0.075)
 
 [node name="Camera2D" type="Camera2D" parent="1"]
+zoom = Vector2(-1.475, -1.475)
 
 [node name="Node2D" type="StaticBody2D" parent="."]
 disable_mode = 2
