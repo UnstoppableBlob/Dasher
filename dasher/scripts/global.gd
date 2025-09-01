@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var tilemap = $levelcont/TileMap
 @onready var player = $Player
+@onready var spawn_timer = $Spawn
 
 var player_speed = 50
 
