@@ -12,6 +12,11 @@ var can_dash = true
 
 var spawned = false
 
+var enemy_in_attack_range = false
+var enemy_attack_cooldown = true
+var health = 100
+var alive = true
+
 func _ready() -> void:
 	visible = false
 	spawned = false
@@ -19,6 +24,7 @@ func _ready() -> void:
 	Global.player = self
 
 func _physics_process(delta: float) -> void:
+	enemy_attack()
 	if spawned:
 		var input_dir = Vector2.ZERO
 		input_dir = Input.get_vector("left", "right", "up", "down")
@@ -75,3 +81,23 @@ func _on_timer_timeout() -> void:
 
 func _on_timer_2_timeout() -> void:
 	can_dash = true
+
+func player():
+	pass
+
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_in_attack_range = true
+
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_in_attack_range = false
+
+
+
+func enemy_attack():
+	if enemy_in_attack_range:
+		print("player took damage")

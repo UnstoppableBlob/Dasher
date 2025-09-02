@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bbnuwippwwp2m"]
+[gd_scene load_steps=59 format=3 uid="uid://bbnuwippwwp2m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0u34c"]
 [ext_resource type="Material" uid="uid://ir0xulqxlrtf" path="res://particles.tres" id="2_fi4pu"]
@@ -429,6 +429,9 @@ _data = {
 "isattacking": SubResource("Animation_abhqv")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3kj5l"]
+radius = 12.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 13
 collision_mask = 13
@@ -475,5 +478,12 @@ lifetime = 0.4
 one_shot = true
 explosiveness = 0.33
 
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_3kj5l")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
