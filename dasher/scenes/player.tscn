@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bbnuwippwwp2m"]
+[gd_scene load_steps=61 format=3 uid="uid://bbnuwippwwp2m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0u34c"]
 [ext_resource type="Material" uid="uid://ir0xulqxlrtf" path="res://particles.tres" id="2_fi4pu"]
@@ -419,54 +419,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [1]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("attack_hitboxes/attack_down:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("attack_hitboxes/attack_up:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("attack_hitboxes/attack_right:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("attack_hitboxes/attack_left:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_abhqv"]
 resource_name = "isattacking"
@@ -496,77 +448,9 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_6wlhd"]
-resource_name = "hitbox_down"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("attack_hitboxes/attack_down:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_xxtyn"]
-resource_name = "hitbox_up"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("attack_hitboxes/attack_up:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_cjyte"]
-resource_name = "hitbox_right"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("attack_hitboxes/attack_right:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_sru3h"]
-resource_name = "hitbox_left"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("attack_hitboxes/attack_left:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2jmi"]
 _data = {
 "RESET": SubResource("Animation_5m2so"),
-"hitbox_down": SubResource("Animation_6wlhd"),
-"hitbox_left": SubResource("Animation_sru3h"),
-"hitbox_right": SubResource("Animation_cjyte"),
-"hitbox_up": SubResource("Animation_xxtyn"),
 "isattacking": SubResource("Animation_abhqv")
 }
 
@@ -627,7 +511,7 @@ shape = SubResource("CircleShape2D_3kj5l")
 [node name="attack_take_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="attack_hitboxes" type="Node2D" parent="."]
+[node name="attack_hitboxes" type="Area2D" parent="."]
 
 [node name="attack_down" type="CollisionShape2D" parent="attack_hitboxes"]
 position = Vector2(0, 4.41)

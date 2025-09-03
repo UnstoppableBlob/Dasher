@@ -21,6 +21,7 @@ var alive = true
 func _ready() -> void:
 	visible = false
 	spawned = false
+	$attack_hitboxes/attack_down.disabled = true
 	dash.visible = false
 	Global.player = self
 
@@ -38,6 +39,12 @@ func _physics_process(delta: float) -> void:
 		input_dir = input_dir.normalized()
 		if input_dir.x != 0:
 			if Input.is_action_just_pressed("attack"):
+				if anim.flip_h:
+					$attack_hitboxes/attack_left.disabled = false
+					print($attack_hitboxes/attack_left.disabled)
+				else:
+					$attack_hitboxes/attack_right.disabled = false
+					print($attack_hitboxes/attack_right.disabled)
 				anim_player.play("isattacking")
 				anim.play("attackright")
 				print("ran")
@@ -46,19 +53,22 @@ func _physics_process(delta: float) -> void:
 			anim.flip_h = input_dir.x < 0
 		elif input_dir.y == 1:
 			if Input.is_action_just_pressed("attack"):
+				$attack_hitboxes/attack_down.disabled = false
+				print($attack_hitboxes/attack_down.disabled)
 				anim_player.play("isattacking")
-				anim.play("attackfront")
+				anim.play("attackfront") 
 			if !is_attacking:
 				anim.play("walkfront")
 		elif input_dir.y == -1:
 			if Input.is_action_just_pressed("attack"):
+				$attack_hitboxes/attack_up.disabled = false
+				print($attack_hitboxes/attack_up.disabled)
 				anim_player.play("isattacking")
 				anim.play("attackback")
 			if !is_attacking:
 				anim.play("walkback")
 		else:
 			if Input.is_action_just_pressed("attack"):
-
 				anim_player.play("isattacking")
 				anim.play("attackfront")
 			if !is_attacking:
