@@ -1,6 +1,8 @@
 extends Node2D
 
 
+var player_current_attack = false
+
 @onready var tilemap = $levelcont/TileMap
 @onready var player = $Player
 @onready var spawn_timer = $Spawn

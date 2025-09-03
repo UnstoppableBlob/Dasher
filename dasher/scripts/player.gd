@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var dash = $Dash
 
 @export var is_attacking = false
+@export var vel = 1
 
 var dashing = false
 var dash_speed = 200
@@ -25,6 +26,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	enemy_attack()
+	
+	if health <= 0:
+		alive = false
+		print("player has been killed")
+		self.queue_free()
+	
 	if spawned:
 		var input_dir = Vector2.ZERO
 		input_dir = Input.get_vector("left", "right", "up", "down")
@@ -65,12 +72,12 @@ func _physics_process(delta: float) -> void:
 			$Timer.start()
 
 		if !dashing:
-			if !is_attacking:
+
 				velocity = input_dir * Global.player_speed
 		else:
 			velocity = input_dir * dash_speed
 		
-		print(Global.player_speed)
+		velocity *= vel
 		
 		move_and_slide()
 
@@ -99,5 +106,12 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 
 
 func enemy_attack():
-	if enemy_in_attack_range:
-		print("player took damage")
+	if enemy_in_attack_range and enemy_attack_cooldown == true:
+		health -= 10
+		enemy_attack_cooldown = false
+		$attack_take_cooldown.start()
+		print(health)
+
+
+func _on_attack_take_cooldown_timeout() -> void:
+	enemy_attack_cooldown = true

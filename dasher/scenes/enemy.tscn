@@ -142,7 +142,7 @@ script = ExtResource("1_xansr")
 position = Vector2(0, -6.54)
 sprite_frames = SubResource("SpriteFrames_slnyu")
 animation = &"idle"
-frame_progress = 0.88423
+frame_progress = 0.491356
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 4
@@ -163,3 +163,5 @@ shape = SubResource("CircleShape2D_fmfee")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_body_entered"]
+[connection signal="body_exited" from="hitbox_enemy" to="." method="_on_hitbox_enemy_body_exited"]

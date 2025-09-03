@@ -4,8 +4,11 @@ var speed = 50
 var chase = false
 var player = null
 
+var health = 50
+var player_in_attack_zone = false
 
 func _physics_process(delta: float) -> void:
+	damage()
 
 	if chase:
 		position += (player.position - position)/speed
@@ -34,3 +37,21 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 		
 func enemy():
 	pass
+
+
+func _on_hitbox_enemy_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_attack_zone = true
+
+
+func _on_hitbox_enemy_body_exited(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_attack_zone = false
+		
+func damage():
+	if player_in_attack_zone and Global.player_current_attack:
+		health -= 20
+		print("slime health = ", health)
+		if health <= 0:
+			self.queue_free()
+		
