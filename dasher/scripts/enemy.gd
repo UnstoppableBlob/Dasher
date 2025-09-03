@@ -8,7 +8,6 @@ var health = 50
 var player_in_attack_zone = false
 
 func _physics_process(delta: float) -> void:
-	damage()
 
 	if chase:
 		position += (player.position - position)/speed
@@ -41,21 +40,19 @@ func enemy():
 
 
 func damage():
-	if player_in_attack_zone and Global.player_current_attack:
-		health -= 20
-		print("slime health = ", health)
-		if health <= 0:
-			self.queue_free()
+	health -= 20
+	print("slime health = ", health)
+	if health <= 0:
+		self.queue_free()
 		
 
 
 func _on_hitbox_enemy_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_attack"):
 		player_in_attack_zone = false
+		damage()
 
 
 func _on_hitbox_enemy_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player_attack"):
-		print("this is working")
 		player_in_attack_zone = true
-		damage()
