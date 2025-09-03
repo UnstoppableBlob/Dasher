@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		input_dir = input_dir.normalized()
 		if input_dir.x != 0:
 			if Input.is_action_just_pressed("attack"):
+				$Timer3.start()
 				if anim.flip_h:
 					$attack_hitboxes/attack_left.disabled = false
 					print($attack_hitboxes/attack_left.disabled)
@@ -53,6 +54,7 @@ func _physics_process(delta: float) -> void:
 			anim.flip_h = input_dir.x < 0
 		elif input_dir.y == 1:
 			if Input.is_action_just_pressed("attack"):
+				$Timer3.start()
 				$attack_hitboxes/attack_down.disabled = false
 				print($attack_hitboxes/attack_down.disabled)
 				anim_player.play("isattacking")
@@ -61,6 +63,7 @@ func _physics_process(delta: float) -> void:
 				anim.play("walkfront")
 		elif input_dir.y == -1:
 			if Input.is_action_just_pressed("attack"):
+				$Timer3.start()
 				$attack_hitboxes/attack_up.disabled = false
 				print($attack_hitboxes/attack_up.disabled)
 				anim_player.play("isattacking")
@@ -69,6 +72,7 @@ func _physics_process(delta: float) -> void:
 				anim.play("walkback")
 		else:
 			if Input.is_action_just_pressed("attack"):
+				$Timer3.start()
 				anim_player.play("isattacking")
 				anim.play("attackfront")
 			if !is_attacking:
@@ -80,7 +84,7 @@ func _physics_process(delta: float) -> void:
 			dashing = true
 			can_dash = false
 			$Timer2.start()
-			$Timer.start()
+			$dash_timer.start()
 
 		if !dashing:
 
@@ -128,3 +132,11 @@ func _on_attack_take_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
 	
 	
+
+
+func _on_timer_3_timeout() -> void:
+	print("timer is running")
+	$attack_hitboxes/attack_down.disabled = true
+	$attack_hitboxes/attack_up.disabled = true
+	$attack_hitboxes/attack_right.disabled = true
+	$attack_hitboxes/attack_left.disabled = true

@@ -489,7 +489,7 @@ libraries = {
 "": SubResource("AnimationLibrary_h2jmi")
 }
 
-[node name="Timer" type="Timer" parent="."]
+[node name="dash_timer" type="Timer" parent="."]
 wait_time = 0.4
 
 [node name="Timer2" type="Timer" parent="."]
@@ -537,8 +537,12 @@ rotation = -0.218166
 shape = ExtResource("6_qsvmf")
 disabled = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="attack_take_cooldown" to="." method="_on_attack_take_cooldown_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
