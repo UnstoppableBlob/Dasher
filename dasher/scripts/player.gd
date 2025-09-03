@@ -15,7 +15,7 @@ var spawned = false
 
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
-var health = 100
+var health = 1000000
 var alive = true
 
 func _ready() -> void:
@@ -42,10 +42,8 @@ func _physics_process(delta: float) -> void:
 				$Timer3.start()
 				if anim.flip_h:
 					$attack_hitboxes/attack_left.disabled = false
-					print($attack_hitboxes/attack_left.disabled)
 				else:
 					$attack_hitboxes/attack_right.disabled = false
-					print($attack_hitboxes/attack_right.disabled)
 				anim_player.play("isattacking")
 				anim.play("attackright")
 				print("ran")
@@ -56,7 +54,6 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("attack"):
 				$Timer3.start()
 				$attack_hitboxes/attack_down.disabled = false
-				print($attack_hitboxes/attack_down.disabled)
 				anim_player.play("isattacking")
 				anim.play("attackfront") 
 			if !is_attacking:
@@ -65,13 +62,13 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("attack"):
 				$Timer3.start()
 				$attack_hitboxes/attack_up.disabled = false
-				print($attack_hitboxes/attack_up.disabled)
 				anim_player.play("isattacking")
 				anim.play("attackback")
 			if !is_attacking:
 				anim.play("walkback")
 		else:
 			if Input.is_action_just_pressed("attack"):
+				$attack_hitboxes/attack_down.disabled = false
 				$Timer3.start()
 				anim_player.play("isattacking")
 				anim.play("attackfront")
@@ -79,6 +76,7 @@ func _physics_process(delta: float) -> void:
 				anim.play("idlefront")
 
 		if Input.is_action_just_pressed("dash") and can_dash:
+			$Timer3.start()
 			dash.emitting = true
 			dash.visible = true
 			dashing = true
@@ -125,7 +123,6 @@ func enemy_attack():
 		health -= 10
 		enemy_attack_cooldown = false
 		$attack_take_cooldown.start()
-		print(health)
 
 
 func _on_attack_take_cooldown_timeout() -> void:
@@ -135,7 +132,6 @@ func _on_attack_take_cooldown_timeout() -> void:
 
 
 func _on_timer_3_timeout() -> void:
-	print("timer is running")
 	$attack_hitboxes/attack_down.disabled = true
 	$attack_hitboxes/attack_up.disabled = true
 	$attack_hitboxes/attack_right.disabled = true

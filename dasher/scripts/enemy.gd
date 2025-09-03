@@ -39,15 +39,7 @@ func enemy():
 	pass
 
 
-func _on_hitbox_enemy_body_entered(body: Node2D) -> void:
-	if body.has_method("player"):
-		player_in_attack_zone = true
 
-
-func _on_hitbox_enemy_body_exited(body: Node2D) -> void:
-	if body.has_method("player"):
-		player_in_attack_zone = false
-		
 func damage():
 	if player_in_attack_zone and Global.player_current_attack:
 		health -= 20
@@ -55,3 +47,15 @@ func damage():
 		if health <= 0:
 			self.queue_free()
 		
+
+
+func _on_hitbox_enemy_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player_attack"):
+		player_in_attack_zone = false
+
+
+func _on_hitbox_enemy_area_exited(area: Area2D) -> void:
+	if area.is_in_group("player_attack"):
+		print("this is working")
+		player_in_attack_zone = true
+		damage()

@@ -511,27 +511,27 @@ shape = SubResource("CircleShape2D_3kj5l")
 [node name="attack_take_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="attack_hitboxes" type="Area2D" parent="."]
+[node name="attack_hitboxes" type="Area2D" parent="." groups=["player_attack"]]
 
-[node name="attack_down" type="CollisionShape2D" parent="attack_hitboxes"]
+[node name="attack_down" type="CollisionShape2D" parent="attack_hitboxes" groups=["player_attack"]]
 position = Vector2(0, 4.41)
 rotation = 1.5708
 shape = ExtResource("5_omh33")
 disabled = true
 
-[node name="attack_up" type="CollisionShape2D" parent="attack_hitboxes"]
+[node name="attack_up" type="CollisionShape2D" parent="attack_hitboxes" groups=["player_attack"]]
 position = Vector2(0, -4.47)
 rotation = 1.5708
 shape = ExtResource("5_omh33")
 disabled = true
 
-[node name="attack_right" type="CollisionShape2D" parent="attack_hitboxes"]
+[node name="attack_right" type="CollisionShape2D" parent="attack_hitboxes" groups=["player_attack"]]
 position = Vector2(4.69, 0.83)
 rotation = 0.218166
 shape = ExtResource("6_qsvmf")
 disabled = true
 
-[node name="attack_left" type="CollisionShape2D" parent="attack_hitboxes"]
+[node name="attack_left" type="CollisionShape2D" parent="attack_hitboxes" groups=["player_attack"]]
 position = Vector2(-4.69, 0.83)
 rotation = -0.218166
 shape = ExtResource("6_qsvmf")

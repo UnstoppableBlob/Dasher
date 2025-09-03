@@ -133,7 +133,7 @@ radius = 78.4092
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmfee"]
-radius = 13.0
+radius = 15.0
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_xansr")
@@ -142,7 +142,7 @@ script = ExtResource("1_xansr")
 position = Vector2(0, -6.54)
 sprite_frames = SubResource("SpriteFrames_slnyu")
 animation = &"idle"
-frame_progress = 0.491356
+frame_progress = 0.397901
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 4
@@ -163,5 +163,6 @@ shape = SubResource("CircleShape2D_fmfee")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_body_entered"]
+[connection signal="area_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_area_entered"]
+[connection signal="area_exited" from="hitbox_enemy" to="." method="_on_hitbox_enemy_area_exited"]
 [connection signal="body_exited" from="hitbox_enemy" to="." method="_on_hitbox_enemy_body_exited"]
