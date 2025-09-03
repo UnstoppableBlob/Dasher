@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 				anim.play("walkback")
 		else:
 			if Input.is_action_just_pressed("attack"):
+
 				anim_player.play("isattacking")
 				anim.play("attackfront")
 			if !is_attacking:
@@ -115,3 +116,5 @@ func enemy_attack():
 
 func _on_attack_take_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
+	
+	

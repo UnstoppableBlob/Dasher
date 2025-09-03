@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnjyx7srf4mlv"]
 
 [ext_resource type="Script" path="res://scripts/8.gd" id="1_nwgny"]
-[ext_resource type="Texture2D" uid="uid://blm4qch1ilvt5" path="res://tile_0330.png" id="2_72pm0"]
+[ext_resource type="Texture2D" uid="uid://blm4qch1ilvt5" path="res://images/tile_0330.png" id="2_72pm0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3h0m"]
 friction = 0.0
