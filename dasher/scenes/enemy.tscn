@@ -142,7 +142,7 @@ script = ExtResource("1_xansr")
 position = Vector2(0, -6.54)
 sprite_frames = SubResource("SpriteFrames_slnyu")
 animation = &"idle"
-frame_progress = 0.385182
+frame_progress = 0.300473
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 4
@@ -160,6 +160,15 @@ shape = SubResource("CircleShape2D_tlhb5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_enemy"]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_fmfee")
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.466778, 0.960261, 0.448455, 1)
+offset_left = -4.0
+offset_top = 3.0
+offset_right = 82.0
+offset_bottom = 24.0
+scale = Vector2(0.14, 0.14)
+show_percentage = false
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

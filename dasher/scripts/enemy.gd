@@ -4,11 +4,11 @@ var speed = 50
 var chase = false
 var player = null
 
-var health = 50
+var health = 60
 var player_in_attack_zone = false
 
 func _physics_process(delta: float) -> void:
-
+	update_health()
 	if chase:
 		position += (player.position - position)/speed
 		$AnimatedSprite2D.play("walk")
@@ -56,3 +56,14 @@ func _on_hitbox_enemy_area_entered(area: Area2D) -> void:
 func _on_hitbox_enemy_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player_attack"):
 		player_in_attack_zone = true
+		
+	
+	
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	
+	if health >= 60:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
