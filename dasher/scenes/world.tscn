@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b8jwpf6vofw4u"]
+[gd_scene load_steps=24 format=3 uid="uid://b8jwpf6vofw4u"]
 
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="1_478b3"]
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_kvihj"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cu77b2118mhjm" path="res://tiles/DampDungeons/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="8_xgwfb"]
 [ext_resource type="PackedScene" uid="uid://bbnuwippwwp2m" path="res://scenes/player.tscn" id="9_otgbb"]
 [ext_resource type="PackedScene" uid="uid://bujvujq55015o" path="res://scenes/1.tscn" id="11_02d6l"]
-[ext_resource type="PackedScene" uid="uid://biqklv0k51344" path="res://scenes/2.tscn" id="11_tiqcv"]
-[ext_resource type="PackedScene" uid="uid://dym0xq7v4v8q4" path="res://scenes/3.tscn" id="12_udvt5"]
+[ext_resource type="PackedScene" uid="uid://gn6hivsmft5w" path="res://scenes/2.tscn" id="11_tiqcv"]
+[ext_resource type="PackedScene" uid="uid://p2nv6dtcjkb" path="res://scenes/3.tscn" id="12_udvt5"]
+[ext_resource type="PackedScene" uid="uid://c33ftki8ksu1b" path="res://scenes/4.tscn" id="13_fcekd"]
 [ext_resource type="PackedScene" uid="uid://cqot7l40xy826" path="res://scenes/enemy.tscn" id="20_t8qcw"]
 
 [sub_resource type="Resource" id="Resource_j2wk4"]
@@ -365,6 +366,8 @@ zoom = Vector2(0.66, 0.66)
 [node name="2" parent="Numbers" instance=ExtResource("11_tiqcv")]
 
 [node name="3" parent="Numbers" instance=ExtResource("12_udvt5")]
+
+[node name="4" parent="Numbers" instance=ExtResource("13_fcekd")]
 
 [node name="enemy" parent="." instance=ExtResource("20_t8qcw")]
 position = Vector2(1475, 119)

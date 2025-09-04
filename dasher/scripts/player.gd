@@ -26,6 +26,7 @@ func _ready() -> void:
 	Global.player = self
 
 func _physics_process(delta: float) -> void:
+	print(Global.player_speed)
 	update_health()
 	enemy_attack()
 	
