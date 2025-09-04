@@ -159,3 +159,4 @@ func _on_regen_timer_timeout() -> void:
 			health = 100
 	if health <= 0:
 		health = 0
+	

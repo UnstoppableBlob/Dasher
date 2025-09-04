@@ -1,9 +1,10 @@
-[gd_scene load_steps=61 format=3 uid="uid://bbnuwippwwp2m"]
+[gd_scene load_steps=62 format=3 uid="uid://bbnuwippwwp2m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0u34c"]
 [ext_resource type="Material" uid="uid://ir0xulqxlrtf" path="res://particles.tres" id="2_fi4pu"]
 [ext_resource type="Texture2D" uid="uid://bh0nh7hj0y5dp" path="res://tiles/Cute_Fantasy_Free/Cute_Fantasy_Free/Player/Player.png" id="2_p5pfy"]
 [ext_resource type="Material" uid="uid://bw3tw46ym67xb" path="res://particles2.tres" id="3_ngifr"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_lgrss"]
 [ext_resource type="Shape2D" uid="uid://bcns7v20l68tc" path="res://materials/attack_shape.tres" id="5_omh33"]
 [ext_resource type="Shape2D" uid="uid://cn3y1dieibcv4" path="res://materials/attack_shape3.tres" id="6_qsvmf"]
 
@@ -504,6 +505,7 @@ one_shot = true
 explosiveness = 0.33
 
 [node name="hitbox" type="Area2D" parent="."]
+script = ExtResource("5_lgrss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_3kj5l")
