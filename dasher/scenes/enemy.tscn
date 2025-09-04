@@ -142,7 +142,7 @@ script = ExtResource("1_xansr")
 position = Vector2(0, -6.54)
 sprite_frames = SubResource("SpriteFrames_slnyu")
 animation = &"idle"
-frame_progress = 0.158844
+frame_progress = 0.385182
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 4

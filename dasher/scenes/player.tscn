@@ -512,6 +512,7 @@ shape = SubResource("CircleShape2D_3kj5l")
 wait_time = 0.5
 
 [node name="attack_hitboxes" type="Area2D" parent="." groups=["player_attack"]]
+visible = false
 
 [node name="attack_down" type="CollisionShape2D" parent="attack_hitboxes" groups=["player_attack"]]
 position = Vector2(0, 4.41)
@@ -540,9 +541,23 @@ disabled = true
 [node name="Timer3" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.416528, 0.952828, 0.661254, 1)
+offset_left = -10.0
+offset_top = 14.0
+offset_right = 133.0
+offset_bottom = 35.0
+scale = Vector2(0.14, 0.14)
+show_percentage = false
+
+[node name="regen_timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="dash_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="attack_take_cooldown" to="." method="_on_attack_take_cooldown_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="regen_timer" to="." method="_on_regen_timer_timeout"]
