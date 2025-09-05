@@ -11,6 +11,8 @@ var dashing = false
 var dash_speed = 200
 var can_dash = true
 
+@export var should_enable = false
+
 var spawned = false
 
 var enemy_in_attack_range = false
@@ -22,11 +24,13 @@ func _ready() -> void:
 	visible = false
 	spawned = false
 	$attack_hitboxes/attack_down.disabled = true
+	$attack_hitboxes/attack_left.disabled = true
+	$attack_hitboxes/attack_right.disabled = true
+	$attack_hitboxes/attack_up.disabled = true
 	dash.visible = false
 	Global.player = self
 
 func _physics_process(delta: float) -> void:
-	print(Global.player_speed)
 	update_health()
 	enemy_attack()
 	
@@ -41,12 +45,13 @@ func _physics_process(delta: float) -> void:
 		input_dir = input_dir.normalized()
 		if input_dir.x != 0:
 			if Input.is_action_just_pressed("attack"):
-				$Timer3.start()
+				#$Timer3.start()
+				anim_player.play("isattacking")
+				print(should_enable)
 				if anim.flip_h:
-					$attack_hitboxes/attack_left.disabled = false
+					activate_hitbox($attack_hitboxes/attack_left) # $attack_hitboxes/attack_left.disabled = false
 				else:
 					$attack_hitboxes/attack_right.disabled = false
-				anim_player.play("isattacking")
 				anim.play("attackright")
 				print("ran")
 			if !is_attacking:
@@ -54,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			anim.flip_h = input_dir.x < 0
 		elif input_dir.y == 1:
 			if Input.is_action_just_pressed("attack"):
-				$Timer3.start()
+				#$Timer3.start()
 				$attack_hitboxes/attack_down.disabled = false
 				anim_player.play("isattacking")
 				anim.play("attackfront") 
@@ -62,7 +67,7 @@ func _physics_process(delta: float) -> void:
 				anim.play("walkfront")
 		elif input_dir.y == -1:
 			if Input.is_action_just_pressed("attack"):
-				$Timer3.start()
+				#$Timer3.start()
 				$attack_hitboxes/attack_up.disabled = false
 				anim_player.play("isattacking")
 				anim.play("attackback")
@@ -71,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			if Input.is_action_just_pressed("attack"):
 				$attack_hitboxes/attack_down.disabled = false
-				$Timer3.start()
+				#$Timer3.start()
 				anim_player.play("isattacking")
 				anim.play("attackfront")
 			if !is_attacking:
@@ -161,3 +166,9 @@ func _on_regen_timer_timeout() -> void:
 	if health <= 0:
 		health = 0
 	
+	
+func activate_hitbox(hitbox):
+	print(should_enable)
+	if should_enable:
+		hitbox.disabled = false
+		#hitbox.disabled = true
