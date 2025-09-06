@@ -4,10 +4,23 @@ var speed = 50
 var chase = false
 var player = null
 
+var letter_list = ["res://materials/tile_0357.png", "res://materials/tile_0358.png", "res://materials/tile_0359.png", "res://materials/tile_0360.png","res://materials/tile_0361.png","res://materials/tile_0362.png", "res://materials/tile_0363.png","res://materials/tile_0364.png","res://materials/tile_0365.png"
+	, "res://materials/tile_0366.png", "res://materials/tile_0392.png", "res://materials/tile_0393.png",
+	"res://materials/tile_0393.png", "res://materials/tile_0394.png", "res://materials/tile_0395.png",
+	"res://materials/tile_0396.png", "res://materials/tile_0397.png", "res://materials/tile_0398.png", 
+	"res://materials/tile_0399.png", "res://materials/tile_0400.png", "res://materials/tile_0428.png",
+	"res://materials/tile_0427.png", "res://materials/tile_0429.png", "res://materials/tile_0430.png",
+	"res://materials/tile_0431.png", "res://materials/tile_0432.png", "res://materials/tile_0433.png",]
+
 var alive = true
 
 var health = 60
 var player_in_attack_zone = false
+
+@onready var e_popup = $e_popup
+
+func _ready() -> void:
+	rotation = 0
 
 func _physics_process(delta: float) -> void:
 	if alive:
@@ -58,13 +71,18 @@ func _on_hitbox_enemy_area_entered(area: Area2D) -> void:
 		if area.is_in_group("player_attack"):
 			player_in_attack_zone = false
 			damage()
+	else:
+		if area.is_in_group("player_hitbox"):
+			e_popup.visible = true
 
 
 func _on_hitbox_enemy_area_exited(area: Area2D) -> void:
 	if alive:
 		if area.is_in_group("player_attack"):
 			player_in_attack_zone = true
-		
+	else:
+		if area.is_in_group("player_hitbox"):
+			e_popup.visible = false
 	
 	
 func update_health():
@@ -86,13 +104,7 @@ func die():
 	$hitbox_enemy/CollisionShape2D.disabled = true
 	$CollisionShape2D.disabled = true
 	var letter = $letter
-	var letter_list = ["res://materials/tile_0357.png", "res://materials/tile_0358.png", "res://materials/tile_0359.png", "res://materials/tile_0360.png","res://materials/tile_0361.png","res://materials/tile_0362.png", "res://materials/tile_0363.png","res://materials/tile_0364.png","res://materials/tile_0365.png"
-	, "res://materials/tile_0366.png", "res://materials/tile_0392.png", "res://materials/tile_0393.png",
-	"res://materials/tile_0393.png", "res://materials/tile_0394.png", "res://materials/tile_0395.png",
-	"res://materials/tile_0396.png", "res://materials/tile_0397.png", "res://materials/tile_0398.png", 
-	"res://materials/tile_0399.png", "res://materials/tile_0400.png", "res://materials/tile_0428.png",
-	"res://materials/tile_0427.png", "res://materials/tile_0429.png", "res://materials/tile_0430.png",
-	"res://materials/tile_0431.png", "res://materials/tile_0432.png", "res://materials/tile_0433.png",]
+	
 
 	print(letter_list.size())
 	
