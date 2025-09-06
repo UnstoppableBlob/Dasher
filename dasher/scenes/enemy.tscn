@@ -172,6 +172,10 @@ scale = Vector2(0.14, 0.14)
 max_value = 60.0
 show_percentage = false
 
+[node name="letter" type="Sprite2D" parent="."]
+position = Vector2(1.22, -5.045)
+scale = Vector2(1.86, 1.86)
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="area_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_area_entered"]
