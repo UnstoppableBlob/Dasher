@@ -115,8 +115,9 @@ func player():
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.has_method("enemy"):
-		enemy_in_attack_range = true
+	if body.alive:
+		if body.has_method("enemy"):
+			enemy_in_attack_range = true
 
 
 func _on_hitbox_body_exited(body: Node2D) -> void:
