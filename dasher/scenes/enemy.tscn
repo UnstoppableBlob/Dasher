@@ -154,6 +154,7 @@ shape = SubResource("CircleShape2D_rymne")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_tlhb5")
+disabled = true
 
 [node name="hitbox_enemy" type="Area2D" parent="."]
 
