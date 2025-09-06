@@ -115,8 +115,8 @@ func player():
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.alive:
-		if body.has_method("enemy"):
+	if body.has_method("enemy"):
+		if body.alive:
 			enemy_in_attack_range = true
 
 
@@ -135,8 +135,8 @@ func enemy_attack():
 
 func _on_attack_take_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
-	
-	
+
+
 
 
 func _on_timer_3_timeout() -> void:

@@ -4,6 +4,8 @@ var speed = 50
 var chase = false
 var player = null
 
+var can_pick = false
+
 var letter_list = ["res://materials/tile_0357.png", "res://materials/tile_0358.png", "res://materials/tile_0359.png", "res://materials/tile_0360.png","res://materials/tile_0361.png","res://materials/tile_0362.png", "res://materials/tile_0363.png","res://materials/tile_0364.png","res://materials/tile_0365.png"
 	, "res://materials/tile_0366.png", "res://materials/tile_0392.png", "res://materials/tile_0393.png",
 	"res://materials/tile_0393.png", "res://materials/tile_0394.png", "res://materials/tile_0395.png",
@@ -35,6 +37,11 @@ func _physics_process(delta: float) -> void:
 				$AnimatedSprite2D.flip_h = false
 		else:
 			$AnimatedSprite2D.play("idle")
+	else:
+		if can_pick:
+			if Input.is_action_just_pressed("pick"):
+				Global.progress += 1
+				$AnimationPlayer.play("die")
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
@@ -74,6 +81,7 @@ func _on_hitbox_enemy_area_entered(area: Area2D) -> void:
 	else:
 		if area.is_in_group("player_hitbox"):
 			e_popup.visible = true
+			can_pick = true
 
 
 func _on_hitbox_enemy_area_exited(area: Area2D) -> void:
@@ -105,9 +113,15 @@ func die():
 	$CollisionShape2D.disabled = true
 	var letter = $letter
 	
+	
 
 	print(letter_list.size())
 	
 	letter.texture = load(letter_list.pick_random())
 	
 	letter.visible = true
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "die":
+		self.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cqot7l40xy826"]
+[gd_scene load_steps=27 format=3 uid="uid://cqot7l40xy826"]
 
 [ext_resource type="Texture2D" uid="uid://d1s0ar2nvr07k" path="res://tiles/Cute_Fantasy_Free/Cute_Fantasy_Free/Enemies/Slime.png" id="1_evl4h"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xansr"]
@@ -167,10 +167,39 @@ tracks/0/keys = {
 "update": 0,
 "values": [-0.232129]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("letter:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.86, 1.86)]
+}
+
+[sub_resource type="Animation" id="Animation_3h34a"]
+resource_name = "die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("letter:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.86, 1.86), Vector2(2, 2), Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjdb1"]
 _data = {
 "RESET": SubResource("Animation_je5ca"),
+"die": SubResource("Animation_3h34a"),
 "e_wiggle": SubResource("Animation_q8u3n")
 }
 
@@ -233,3 +262,4 @@ autoplay = "e_wiggle"
 [connection signal="area_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_area_entered"]
 [connection signal="area_exited" from="hitbox_enemy" to="." method="_on_hitbox_enemy_area_exited"]
 [connection signal="body_exited" from="hitbox_enemy" to="." method="_on_hitbox_enemy_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
