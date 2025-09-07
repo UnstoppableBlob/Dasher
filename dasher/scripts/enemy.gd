@@ -107,6 +107,7 @@ func update_health():
 
 func die():
 	alive = false
+	$healthbar.visible = false
 	$detection_area/CollisionShape2D.disabled = true
 	$AnimatedSprite2D.visible = false
 	$hitbox_enemy/CollisionShape2D.disabled = true
