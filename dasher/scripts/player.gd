@@ -124,7 +124,7 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("enemy"):
 		enemy_in_attack_range = false
 
-
+ 
 
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown == true:
