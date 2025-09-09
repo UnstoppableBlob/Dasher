@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	if health <= 0:
 		alive = false
 		print("player has been killed")
-		self.queue_free()
+		get_tree().change_scene_to_file("res://scenes/dead_screen.tscn")
 	
 	if spawned:
 		var input_dir = Vector2.ZERO

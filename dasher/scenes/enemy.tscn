@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d1s0ar2nvr07k" path="res://tiles/Cute_Fantasy_Free/Cute_Fantasy_Free/Enemies/Slime.png" id="1_evl4h"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xansr"]
-[ext_resource type="Texture2D" uid="uid://doqh3888f0msk" path="res://tiles/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0087.png" id="3_ejeij"]
+[ext_resource type="Texture2D" uid="uid://b8r0xq0t0xrm7" path="res://tiles/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0087.png" id="3_ejeij"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1er0"]
 atlas = ExtResource("1_evl4h")
