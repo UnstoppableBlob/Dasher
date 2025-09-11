@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var is_attacking = false
 @export var vel = 1
 
+@export var inv: Inv
+
 var dashing = false
 var dash_speed = 200
 var can_dash = true

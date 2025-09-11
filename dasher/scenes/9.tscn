@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dycqh24unvgjq"]
 
-[ext_resource type="Script" path="res://9.gd" id="1_gewln"]
+[ext_resource type="Script" path="res://scripts/9.gd" id="1_gewln"]
 [ext_resource type="Texture2D" uid="uid://dg0xjpt2122ag" path="res://images/tile_0331.png" id="2_au5th"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3h0m"]

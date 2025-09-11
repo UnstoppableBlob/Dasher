@@ -1,12 +1,14 @@
-[gd_scene load_steps=67 format=3 uid="uid://bbnuwippwwp2m"]
+[gd_scene load_steps=69 format=3 uid="uid://bbnuwippwwp2m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0u34c"]
-[ext_resource type="Material" uid="uid://ir0xulqxlrtf" path="res://particles.tres" id="2_fi4pu"]
+[ext_resource type="Resource" uid="uid://dofedn11kg6tt" path="res://inventory/playerinv.tres" id="2_8q3kt"]
+[ext_resource type="Material" uid="uid://ir0xulqxlrtf" path="res://materials/particles.tres" id="2_fi4pu"]
 [ext_resource type="Texture2D" uid="uid://bh0nh7hj0y5dp" path="res://tiles/Cute_Fantasy_Free/Cute_Fantasy_Free/Player/Player.png" id="2_p5pfy"]
-[ext_resource type="Material" uid="uid://bw3tw46ym67xb" path="res://particles2.tres" id="3_ngifr"]
+[ext_resource type="Material" uid="uid://bw3tw46ym67xb" path="res://materials/particles2.tres" id="3_ngifr"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_lgrss"]
 [ext_resource type="Shape2D" uid="uid://bcns7v20l68tc" path="res://materials/attack_shape.tres" id="5_omh33"]
 [ext_resource type="Shape2D" uid="uid://cn3y1dieibcv4" path="res://materials/attack_shape3.tres" id="6_qsvmf"]
+[ext_resource type="PackedScene" uid="uid://mv5oihandy0i" path="res://inventory/inv_ui.tscn" id="9_ritp1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkaba"]
 size = Vector2(10, 15)
@@ -478,6 +480,22 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_8t8uh"]
+resource_name = "die"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:alive")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_abhqv"]
 resource_name = "isattacking"
 length = 0.4
@@ -518,22 +536,6 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_8t8uh"]
-resource_name = "die"
-length = 0.55
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:alive")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.533333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2jmi"]
 _data = {
 "RESET": SubResource("Animation_5m2so"),
@@ -548,6 +550,7 @@ radius = 12.0
 collision_layer = 13
 collision_mask = 13
 script = ExtResource("1_0u34c")
+inv = ExtResource("2_8q3kt")
 
 [node name="Walk" type="GPUParticles2D" parent="."]
 position = Vector2(0, 6.42)
@@ -641,6 +644,8 @@ show_percentage = false
 [node name="regen_timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="Inv_UI" parent="." instance=ExtResource("9_ritp1")]
 
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

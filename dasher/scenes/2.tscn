@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://gn6hivsmft5w"]
 
-[ext_resource type="Script" path="res://2.gd" id="1_wkf3f"]
+[ext_resource type="Script" path="res://scripts/2.gd" id="1_wkf3f"]
 [ext_resource type="Texture2D" uid="uid://chfpyt2b8k67n" path="res://tiles/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0324.png" id="2_smjkf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3h0m"]

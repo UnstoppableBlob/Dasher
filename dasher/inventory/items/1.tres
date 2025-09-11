@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://de2ygrh3aak8c"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_jstyg"]
+[ext_resource type="Texture2D" uid="uid://v6j2h1mt0li6" path="res://tiles/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0323.png" id="2_v8trk"]
+
+[resource]
+script = ExtResource("1_jstyg")
+name = "1"
+texture = ExtResource("2_v8trk")
