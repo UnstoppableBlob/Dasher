@@ -36,7 +36,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	update_health()
-	enemy_attack()
+	
+	if enemy:
+		if enemy.alive:
+			enemy_attack()
+		else:
+			pass
+	
 	
 	if health <= 0:
 		alive = false
@@ -120,12 +126,15 @@ func player():
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("enemy"):
+		enemy = body
+		
 		if body.alive:
 			enemy_in_attack_range = true
 
 
 func _on_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("enemy"):
+		enemy = null
 		enemy_in_attack_range = false
 
  
