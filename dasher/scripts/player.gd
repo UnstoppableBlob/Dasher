@@ -22,6 +22,8 @@ var enemy_attack_cooldown = true
 var health = 100
 var alive = true
 
+var enemy
+
 func _ready() -> void:
 	visible = false
 	spawned = false

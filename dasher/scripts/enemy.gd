@@ -69,6 +69,7 @@ func damage():
 		health -= 20
 		print("slime health = ", health)
 		if health <= 0:
+			print(health)
 			die()
 		
 
