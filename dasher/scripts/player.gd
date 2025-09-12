@@ -50,6 +50,9 @@ func _physics_process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://scenes/dead_screen.tscn")
 	
 	if spawned:
+		if Input.is_action_just_pressed("screenshot"):
+			print("screenshot taken")
+			take_screenshot()
 		var input_dir = Vector2.ZERO
 		input_dir = Input.get_vector("left", "right", "up", "down")
 		input_dir = input_dir.normalized()
@@ -190,3 +193,20 @@ func activate_hitbox(hitbox):
 
 func collect(item):
 	inv.insert(item)
+
+
+func take_screenshot():
+	await RenderingServer.frame_post_draw
+	
+	var timestamp = Time.\
+	get_datetime_string_from_system().replace(':', '-')
+	var folder = \
+	ProjectSettings.globalize_path('user://Screenshots')
+	if not DirAccess.dir_exists_absolute(folder):
+		DirAccess.make_dir_recursive_absolute(folder)
+	var path = '%s/screenshot_%s.jpg' % [folder, timestamp]
+	
+	get_viewport().get_texture().get_image().save_jpg(path)
+	
+	
+	
