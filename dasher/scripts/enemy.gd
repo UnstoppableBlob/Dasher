@@ -19,6 +19,8 @@ var alive = true
 var health = 60
 var player_in_attack_zone = false
 
+@export var item: InvItem
+
 @onready var e_popup = $e_popup
 
 func _ready() -> void:
@@ -41,6 +43,7 @@ func _physics_process(delta: float) -> void:
 		if can_pick:
 			if Input.is_action_just_pressed("pick"):
 				Global.progress += 1
+				Global.player.collect(item)
 				$AnimationPlayer.play("die")
 
 
@@ -119,7 +122,11 @@ func die():
 
 	print(letter_list.size())
 	
-	letter.texture = load(letter_list.pick_random())
+	var random = load(letter_list.pick_random())
+	
+	item.texture = random
+	
+	letter.texture = random
 	
 	letter.visible = true
 

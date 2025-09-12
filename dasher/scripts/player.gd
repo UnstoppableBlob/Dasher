@@ -177,3 +177,7 @@ func activate_hitbox(hitbox):
 	if should_enable:
 		hitbox.disabled = false
 		#hitbox.disabled = true
+
+
+func collect(item):
+	inv.insert(item)

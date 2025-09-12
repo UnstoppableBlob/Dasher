@@ -646,11 +646,11 @@ wait_time = 10.0
 autostart = true
 
 [node name="Inv_UI" parent="." instance=ExtResource("9_ritp1")]
-offset_left = -45.0
-offset_top = -69.0
-offset_right = 115.0
-offset_bottom = 29.0
-scale = Vector2(0.565, 0.565)
+offset_left = -27.0
+offset_top = -36.0
+offset_right = 133.0
+offset_bottom = 62.0
+scale = Vector2(0.815, 0.815)
 
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
