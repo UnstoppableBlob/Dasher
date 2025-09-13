@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b8jwpf6vofw4u"]
+[gd_scene load_steps=27 format=3 uid="uid://b8jwpf6vofw4u"]
 
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="1_478b3"]
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_kvihj"]
@@ -15,7 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://p2nv6dtcjkb" path="res://scenes/3.tscn" id="12_udvt5"]
 [ext_resource type="PackedScene" uid="uid://c33ftki8ksu1b" path="res://scenes/4.tscn" id="13_fcekd"]
 [ext_resource type="PackedScene" uid="uid://b4ru1frx6yodc" path="res://scenes/5.tscn" id="14_r3n8r"]
+[ext_resource type="Script" path="res://scripts/sub_viewport.gd" id="17_u7srb"]
 [ext_resource type="PackedScene" uid="uid://cqot7l40xy826" path="res://scenes/enemy.tscn" id="20_t8qcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8n33"]
+size = Vector2(7926, 986)
 
 [sub_resource type="Resource" id="Resource_j2wk4"]
 script = ExtResource("4_lkdj5")
@@ -327,11 +331,30 @@ terrain_set_0/terrain_2/name = "Filling"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/5 = SubResource("TileSetAtlasSource_mx0ee")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8n33"]
-size = Vector2(7926, 986)
-
 [node name="world" type="Node2D"]
 script = ExtResource("1_kvihj")
+
+[node name="borders" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders"]
+position = Vector2(-147, -2424)
+shape = SubResource("RectangleShape2D_n8n33")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="borders"]
+position = Vector2(-318, 2023)
+shape = SubResource("RectangleShape2D_n8n33")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="borders"]
+position = Vector2(-3152, 101)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_n8n33")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="borders"]
+position = Vector2(2761, 13)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_n8n33")
 
 [node name="levelcont" type="Node2D" parent="."]
 
@@ -943,29 +966,39 @@ position = Vector2(625, 782)
 [node name="enemy70" parent="enemies" instance=ExtResource("20_t8qcw")]
 position = Vector2(429, -117)
 
-[node name="borders" type="StaticBody2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="borders"]
-position = Vector2(-147, -2424)
-shape = SubResource("RectangleShape2D_n8n33")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="borders"]
-position = Vector2(-318, 2023)
-shape = SubResource("RectangleShape2D_n8n33")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="borders"]
-position = Vector2(-3152, 101)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_n8n33")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="borders"]
-position = Vector2(2761, 13)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_n8n33")
-
 [node name="Player" parent="." instance=ExtResource("9_otgbb")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -268.0
+offset_right = -14.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+script = ExtResource("17_u7srb")
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.3, 0.3)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/SubViewportContainer"]
+points = PackedVector2Array(0, 0, 0, 256, 256, 256, 256, 0)
+closed = true
 
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="timeout" from="Spawn" to="Numbers/1" method="_on_spawn_timeout"]
