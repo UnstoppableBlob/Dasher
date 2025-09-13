@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D
 @onready var anim_player = $AnimationPlayer
 @onready var dash = $Dash
+@onready var cam = $Camera2D
+@onready var noise = FastNoiseLite.new()
 
 @export var is_attacking = false
 @export var vel = 1
@@ -24,7 +26,14 @@ var alive = true
 
 var enemy
 
+var cam_base_position : Vector2
+var shaketime = 0.5
+var shakeamount = 500
+var screen_shake_delay = 0
+
+
 func _ready() -> void:
+	noise.seed = 0
 	visible = false
 	spawned = false
 	$attack_hitboxes/attack_down.disabled = true
@@ -96,6 +105,7 @@ func _physics_process(delta: float) -> void:
 				anim.play("idlefront")
 
 		if Input.is_action_just_pressed("dash") and can_dash:
+			screen_shake()
 			$Timer3.start()
 			dash.emitting = true
 			dash.visible = true
@@ -113,6 +123,21 @@ func _physics_process(delta: float) -> void:
 		velocity *= vel
 		
 		move_and_slide()
+
+func screen_shake():
+	cam_base_position = cam.global_position
+	screen_shake_delay = shaketime
+	
+func _process(delta: float) -> void:
+	if screen_shake_delay > 0:
+		cam.offset = Vector2(_get_noise(0), _get_noise(1))
+		screen_shake_delay -= delta
+	else:
+		cam.offset = Vector2.ZERO
+		
+func _get_noise(seed):
+	noise.seed = seed
+	return noise.get_noise_1d(randf() * screen_shake_delay) * shakeamount
 
 
 func _on_timer_timeout() -> void:
