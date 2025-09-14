@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8jwpf6vofw4u"]
+[gd_scene load_steps=28 format=3 uid="uid://b8jwpf6vofw4u"]
 
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="1_478b3"]
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_kvihj"]
@@ -330,6 +330,9 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_0/terrain_2/name = "Filling"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/5 = SubResource("TileSetAtlasSource_mx0ee")
+
+[sub_resource type="BoxMesh" id="BoxMesh_o8eng"]
+size = Vector3(0.5, 0.5, 1)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_kvihj")
@@ -992,13 +995,16 @@ script = ExtResource("17_u7srb")
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 zoom = Vector2(0.3, 0.3)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Line2D" type="Line2D" parent="CanvasLayer/SubViewportContainer"]
 points = PackedVector2Array(0, 0, 0, 256, 256, 256, 256, 0)
 closed = true
+default_color = Color(0, 0, 0, 0)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/SubViewportContainer"]
+modulate = Color(0.501961, 0, 0.0392157, 1)
+position = Vector2(128, 127)
+scale = Vector2(11.5, 11.25)
+mesh = SubResource("BoxMesh_o8eng")
 
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="timeout" from="Spawn" to="Numbers/1" method="_on_spawn_timeout"]
