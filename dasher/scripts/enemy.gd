@@ -119,8 +119,6 @@ func die():
 	var letter = $letter
 	
 	
-
-	print(letter_list.size())
 	
 	var random = load(letter_list.pick_random())
 	

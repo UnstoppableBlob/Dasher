@@ -12,7 +12,6 @@ var progress = 0
 var player_speed = 50
 
 func _on_spawn_timeout() -> void:
-	print("spawned")
 	player.spawned = true
 	player.visible = true
 
@@ -23,5 +22,4 @@ func _process(delta: float) -> void:
 
 
 func finish():
-	print(progress)
 	get_tree().change_scene_to_file("res://scenes/win.tscn")

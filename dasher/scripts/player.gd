@@ -55,33 +55,27 @@ func _physics_process(delta: float) -> void:
 	
 	if health <= 0:
 		alive = false
-		print("player has been killed")
 		get_tree().change_scene_to_file("res://scenes/dead_screen.tscn")
 	
 	if spawned:
 		if Input.is_action_just_pressed("screenshot"):
-			print("screenshot taken")
 			take_screenshot()
 		var input_dir = Vector2.ZERO
 		input_dir = Input.get_vector("left", "right", "up", "down")
 		input_dir = input_dir.normalized()
 		if input_dir.x != 0:
 			if Input.is_action_just_pressed("attack"):
-				#$Timer3.start()
 				anim_player.play("isattacking")
-				print(should_enable)
 				if anim.flip_h:
-					activate_hitbox($attack_hitboxes/attack_left) # $attack_hitboxes/attack_left.disabled = false
+					activate_hitbox($attack_hitboxes/attack_left) 
 				else:
 					$attack_hitboxes/attack_right.disabled = false
 				anim.play("attackright")
-				print("ran")
 			if !is_attacking:
 				anim.play("walkright")
 			anim.flip_h = input_dir.x < 0
 		elif input_dir.y == 1:
 			if Input.is_action_just_pressed("attack"):
-				#$Timer3.start()
 				$attack_hitboxes/attack_down.disabled = false
 				anim_player.play("isattacking")
 				anim.play("attackfront") 
@@ -89,7 +83,6 @@ func _physics_process(delta: float) -> void:
 				anim.play("walkfront")
 		elif input_dir.y == -1:
 			if Input.is_action_just_pressed("attack"):
-				#$Timer3.start()
 				$attack_hitboxes/attack_up.disabled = false
 				anim_player.play("isattacking")
 				anim.play("attackback")
@@ -98,7 +91,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			if Input.is_action_just_pressed("attack"):
 				$attack_hitboxes/attack_down.disabled = false
-				#$Timer3.start()
 				anim_player.play("isattacking")
 				anim.play("attackfront")
 			if !is_attacking:
@@ -115,7 +107,6 @@ func _physics_process(delta: float) -> void:
 			$dash_timer.start()
 
 		if !dashing:
-
 				velocity = input_dir * Global.player_speed
 		else:
 			velocity = input_dir * dash_speed
@@ -128,12 +119,14 @@ func screen_shake():
 	cam_base_position = cam.global_position
 	screen_shake_delay = shaketime
 	
+	
 func _process(delta: float) -> void:
 	if screen_shake_delay > 0:
 		cam.offset = Vector2(_get_noise(0), _get_noise(1))
 		screen_shake_delay -= delta
 	else:
 		cam.offset = Vector2.ZERO
+		
 		
 func _get_noise(seed):
 	noise.seed = seed
@@ -144,12 +137,13 @@ func _on_timer_timeout() -> void:
 	dashing = false
 	dash.visible = false
 
+
 func _on_timer_2_timeout() -> void:
 	can_dash = true
 
+
 func player():
 	pass
-
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
@@ -210,10 +204,8 @@ func _on_regen_timer_timeout() -> void:
 	
 	
 func activate_hitbox(hitbox):
-	print(should_enable)
 	if should_enable:
 		hitbox.disabled = false
-		#hitbox.disabled = true
 
 
 func collect(item):
