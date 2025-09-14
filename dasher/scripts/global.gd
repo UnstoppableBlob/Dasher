@@ -24,3 +24,4 @@ func _process(delta: float) -> void:
 
 func finish():
 	print(progress)
+	get_tree().change_scene_to_file("res://scenes/win.tscn")

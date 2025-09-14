@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh4rrynpw4ftr"]
+
+[ext_resource type="Script" path="res://scripts/dead_screen.gd" id="1_pcuab"]
+[ext_resource type="FontFile" uid="uid://1pka85soio4l" path="res://tiles/font/Abaddon_Fonts_v1.2/Abaddon Bold.ttf" id="2_rnmdh"]
+[ext_resource type="FontFile" uid="uid://5726h5nw7u3b" path="res://tiles/font/Abaddon_Fonts_v1.2/Abaddon Light.ttf" id="3_jxntg"]
+[ext_resource type="StyleBox" uid="uid://bher0em8gowje" path="res://materials/button_style_hover.tres" id="4_w3o3r"]
+[ext_resource type="StyleBox" uid="uid://b2pse6gwlq482" path="res://materials/button_style_normal.tres" id="5_5kmbn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n386o"]
+font = ExtResource("2_rnmdh")
+font_size = 292
+font_color = Color(0.347791, 0.11875, 0.0233401, 1)
+outline_size = 9
+outline_color = Color(0.670588, 0.376471, 0.172549, 1)
+shadow_size = 22
+shadow_color = Color(0.245952, 0.121644, 0.0343888, 1)
+
+[node name="win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pcuab")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Death_text" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "You Win!"
+label_settings = SubResource("LabelSettings_n386o")
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jxntg")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = ExtResource("4_w3o3r")
+theme_override_styles/normal = ExtResource("5_5kmbn")
+text = "Restart"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jxntg")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/hover = ExtResource("4_w3o3r")
+theme_override_styles/normal = ExtResource("5_5kmbn")
+text = "Exit"
