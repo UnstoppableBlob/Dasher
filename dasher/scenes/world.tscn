@@ -574,7 +574,7 @@ position = Vector2(801, -366)
 position = Vector2(518, -318)
 
 [node name="enemy16" parent="enemies" instance=ExtResource("20_t8qcw")]
-position = Vector2(143, -245)
+position = Vector2(77, -221)
 
 [node name="enemy17" parent="enemies" instance=ExtResource("20_t8qcw")]
 position = Vector2(-105, -382)
@@ -625,10 +625,10 @@ position = Vector2(-701, -206)
 position = Vector2(-457, -184)
 
 [node name="enemy33" parent="enemies" instance=ExtResource("20_t8qcw")]
-position = Vector2(-203, -140)
+position = Vector2(-154, -115)
 
 [node name="enemy34" parent="enemies" instance=ExtResource("20_t8qcw")]
-position = Vector2(229, -54)
+position = Vector2(147, -30)
 
 [node name="enemy35" parent="enemies" instance=ExtResource("20_t8qcw")]
 position = Vector2(607, 70)
@@ -829,10 +829,10 @@ position = Vector2(1991, 565)
 position = Vector2(547, 295)
 
 [node name="enemy39" parent="enemies" instance=ExtResource("20_t8qcw")]
-position = Vector2(83, 238)
+position = Vector2(28, 204)
 
 [node name="enemy40" parent="enemies" instance=ExtResource("20_t8qcw")]
-position = Vector2(369, 127)
+position = Vector2(297, 133)
 
 [node name="enemy41" parent="enemies" instance=ExtResource("20_t8qcw")]
 position = Vector2(-256, 143)
@@ -971,7 +971,7 @@ position = Vector2(-412, 842)
 position = Vector2(-118, 748)
 
 [node name="enemy65" parent="enemies" instance=ExtResource("20_t8qcw")]
-position = Vector2(-182, 408)
+position = Vector2(-116, 329)
 
 [node name="enemy66" parent="enemies" instance=ExtResource("20_t8qcw")]
 position = Vector2(218, 778)
@@ -986,7 +986,7 @@ position = Vector2(663, 589)
 position = Vector2(625, 782)
 
 [node name="enemy70" parent="enemies" instance=ExtResource("20_t8qcw")]
-position = Vector2(429, -117)
+position = Vector2(312, -38)
 
 [node name="Player" parent="." instance=ExtResource("9_otgbb")]
 

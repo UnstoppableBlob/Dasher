@@ -17,7 +17,7 @@ func _on_spawn_timeout() -> void:
 
 
 func _process(delta: float) -> void:
-	if progress == 2:
+	if progress == 25:
 		finish()
 
 
